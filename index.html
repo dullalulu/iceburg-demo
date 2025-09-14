@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iceburg Juices & Ice Cream</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Animated background gradient */
+    .animated-bg {
+      background: linear-gradient(-45deg, #E0F7FA, #B2DFDB, #FFEBEE, #FFF3E0);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating emoji animation */
+    .floating {
+      position: absolute;
+      font-size: 2.5rem;
+      animation: floaty 8s infinite ease-in-out;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-30px) rotate(10deg); }
+    }
+
+    /* Ripple effect for buttons */
+    .glow-button {
+      position: relative;
+      overflow: hidden;
+    }
+    .glow-button::after {
+      content: "";
+      position: absolute;
+      background: rgba(255,255,255,0.6);
+      width: 5px; height: 100%;
+      top: 0; left: -100%;
+      transform: skewX(-20deg);
+    }
+    .glow-button:hover::after {
+      left: 200%;
+      transition: left 0.8s ease;
+    }
+
+    /* Section fade-in effect */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Lightbox overlay */
+    #lightbox {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      animation: popIn 0.5s ease;
+    }
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800">
+  <!-- Hero Section -->
+  <section id="home" class="animated-bg relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+    <div>
+      <h1 class="text-5xl md:text-7xl font-bold drop-shadow-lg animate-bounce">Welcome to Iceburg</h1>
+      <p class="mt-4 text-lg md:text-2xl drop-shadow">Juices, Ice Cream & Factory Outlet Treats</p>
+      <a href="#products" class="mt-6 inline-block px-6 py-3 bg-pink-500 rounded-full text-white glow-button">Explore More</a>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="py-16 px-6 md:px-16 bg-white reveal">
+    <h2 class="text-4xl font-bold text-center mb-12">Our Products</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1600271886982-2a2c7a1a2e51" class="rounded-lg shadow-lg mx-auto mb-4" alt="Juice">
+        <h3 class="text-2xl font-semibold">Fresh Juices</h3>
+        <p class="mt-2">Refreshing and made from real fruits.</p>
+      </div>
+      <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d8b0" class="rounded-lg shadow-lg mx-auto mb-4" alt="Ice Cream">
+        <h3 class="text-2xl font-semibold">Delicious Ice Cream</h3>
+        <p class="mt-2">Scoop up happiness in every flavor.</p>
+      </div>
+      <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1577801598834-ff54efb38fdf" class="rounded-lg shadow-lg mx-auto mb-4" alt="Smoothies">
+        <h3 class="text-2xl font-semibold">Smoothies</h3>
+        <p class="mt-2">Blended perfection, just for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="py-16 px-6 md:px-16 bg-gray-50 reveal">
+    <h2 class="text-4xl font-bold text-center mb-12">Gallery</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314" class="rounded-lg shadow-lg cursor-pointer" alt="Juice Bottles">
+      <img src="https://images.unsplash.com/photo-1542444459-db4b6e5b61f3" class="rounded-lg shadow-lg cursor-pointer" alt="Smoothie">
+      <img src="https://images.unsplash.com/photo-1590080876273-8d4a2b5e1e9d" class="rounded-lg shadow-lg cursor-pointer" alt="Sundae">
+      <img src="https://images.unsplash.com/photo-1589984662642-9b11aee55c4f" class="rounded-lg shadow-lg cursor-pointer" alt="Popsicles">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092" class="rounded-lg shadow-lg cursor-pointer" alt="Milkshake">
+      <img src="https://images.unsplash.com/photo-1613145993488-1ef12a2e2e9f" class="rounded-lg shadow-lg cursor-pointer" alt="Ice Cream Tub">
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 px-6 md:px-16 bg-white text-center reveal">
+    <h2 class="text-4xl font-bold mb-8">Get in Touch</h2>
+    <p class="mb-6">Visit our factory outlet or reach out for wholesale orders!</p>
+    <a href="mailto:info@iceburg.com" class="px-6 py-3 bg-green-500 rounded-full text-white glow-button">Email Us</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center bg-gray-800 text-white">
+    <p>&copy; 2025 Iceburg Juices & Ice Cream. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox container -->
+  <div id="lightbox"></div>
+
+  <script>
+    // Reveal sections on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(section => {
+      revealObserver.observe(section);
+    });
+
+    // Floating emojis in hero
+    const emojis = ['🍓','🍊','🍦','🥭','🍒'];
+    const hero = document.querySelector('#home');
+    emojis.forEach((emoji, i) => {
+      let span = document.createElement('span');
+      span.textContent = emoji;
+      span.className = "floating";
+      span.style.left = `${20 * i + 10}%`;
+      span.style.top = `${Math.random() * 50 + 20}%`;
+      span.style.animationDelay = `${i}s`;
+      hero.appendChild(span);
+    });
+
+    // Lightbox gallery
+    const lightbox = document.querySelector('#lightbox');
+    const images = document.querySelectorAll('#gallery img');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+        lightbox.style.display = "flex";
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = "none";
+    });
+  </script>
+</body>
+</html>
